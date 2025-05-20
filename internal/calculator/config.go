@@ -10,6 +10,7 @@ import (
 type Config struct {
 	XMLName    xml.Name          `xml:"calculator"`
 	Operations []OperationConfig `xml:"operations>operation"`
+	Problems   ProblemConfig     `xml:"problems"`
 }
 
 // OperationConfig 操作配置结构
@@ -18,6 +19,24 @@ type OperationConfig struct {
 	Name        string `xml:"name"`
 	Description string `xml:"description"`
 	Enabled     bool   `xml:"enabled"`
+}
+
+// ProblemConfig 题目配置结构
+type ProblemConfig struct {
+	DefaultTimeLimit int                `xml:"defaultTimeLimit"`
+	RestReminder     int                `xml:"restReminder"`
+	Difficulties     []DifficultyConfig `xml:"difficulties>difficulty"`
+}
+
+// DifficultyConfig 难度配置结构
+type DifficultyConfig struct {
+	Level       string `xml:"level,attr"`
+	Name        string `xml:"name"`
+	Description string `xml:"description"`
+	TimeLimit   int    `xml:"timeLimit"`
+	MinNumber   int    `xml:"minNumber"`
+	MaxNumber   int    `xml:"maxNumber"`
+	Operations  string `xml:"operations"`
 }
 
 // LoadConfig 从XML文件加载配置

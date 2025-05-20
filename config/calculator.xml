@@ -22,4 +22,40 @@
             <enabled>true</enabled>
         </operation>
     </operations>
+    
+    <problems>
+        <!-- 默认时间限制(秒) -->
+        <defaultTimeLimit>30</defaultTimeLimit>
+        <!-- 休息提醒时间(秒) -->
+        <restReminder>120</restReminder>
+        
+        <difficulties>
+            <difficulty level="easy">
+                <name>简单</name>
+                <description>个位数运算，适合低年级学生</description>
+                <timeLimit>10</timeLimit>
+                <minNumber>1</minNumber>
+                <maxNumber>9</maxNumber>
+                <operations>add,subtract</operations>
+            </difficulty>
+            
+            <difficulty level="medium">
+                <name>中等</name>
+                <description>两位数运算，适合中年级学生</description>
+                <timeLimit>20</timeLimit>
+                <minNumber>10</minNumber>
+                <maxNumber>99</maxNumber>
+                <operations>add,subtract,multiply</operations>
+            </difficulty>
+            
+            <difficulty level="hard">
+                <name>困难</name>
+                <description>多位数或多项运算，适合高年级学生</description>
+                <timeLimit>30</timeLimit>
+                <minNumber>10</minNumber>
+                <maxNumber>999</maxNumber>
+                <operations>add,subtract,multiply,divide</operations>
+            </difficulty>
+        </difficulties>
+    </problems>
 </calculator>
