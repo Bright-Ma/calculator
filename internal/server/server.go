@@ -74,26 +74,36 @@ func (s *Server) handleIndex(w http.ResponseWriter, r *http.Request) {
 
 // handleCalculate 处理计算请求
 func (s *Server) handleCalculate(w http.ResponseWriter, r *http.Request) {
+	log.Printf("收到计算请求: %s %s", r.Method, r.URL.Path)
+
 	if r.Method != http.MethodPost {
+		log.Printf("错误: 不支持的HTTP方法 %s", r.Method)
 		http.Error(w, "仅支持POST请求", http.StatusMethodNotAllowed)
 		return
 	}
 
 	var req CalculateRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		log.Printf("错误: 请求解析失败: %v", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
+	log.Printf("计算请求参数: 操作=%s, A=%f, B=%f", req.Operation, req.A, req.B)
+
 	operation, err := s.factory.Create(req.Operation)
 	if err != nil {
+		log.Printf("错误: 创建操作失败: %v", err)
 		json.NewEncoder(w).Encode(CalculateResponse{
 			Error: err.Error(),
 		})
 		return
 	}
 
+	log.Printf("执行操作: %s (%s)", operation.GetName(), operation.GetSymbol())
 	result := operation.Calculate(req.A, req.B)
+	log.Printf("计算结果: %f", result)
+
 	json.NewEncoder(w).Encode(CalculateResponse{
 		Result: result,
 	})

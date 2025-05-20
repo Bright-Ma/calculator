@@ -1,5 +1,7 @@
 package calculator
 
+import "log"
+
 // Operation 定义计算器操作的接口
 type Operation interface {
 	// Calculate 执行计算操作
@@ -14,7 +16,10 @@ type Operation interface {
 type AddOperation struct{}
 
 func (o *AddOperation) Calculate(a, b float64) float64 {
-	return a + b
+	log.Printf("执行加法运算: %f + %f", a, b)
+	result := a + b
+	log.Printf("加法运算结果: %f", result)
+	return result
 }
 
 func (o *AddOperation) GetName() string {
@@ -29,7 +34,10 @@ func (o *AddOperation) GetSymbol() string {
 type SubtractOperation struct{}
 
 func (o *SubtractOperation) Calculate(a, b float64) float64 {
-	return a - b
+	log.Printf("执行减法运算: %f - %f", a, b)
+	result := a - b
+	log.Printf("减法运算结果: %f", result)
+	return result
 }
 
 func (o *SubtractOperation) GetName() string {
@@ -44,7 +52,10 @@ func (o *SubtractOperation) GetSymbol() string {
 type MultiplyOperation struct{}
 
 func (o *MultiplyOperation) Calculate(a, b float64) float64 {
-	return a * b
+	log.Printf("执行乘法运算: %f * %f", a, b)
+	result := a * b
+	log.Printf("乘法运算结果: %f", result)
+	return result
 }
 
 func (o *MultiplyOperation) GetName() string {
@@ -59,11 +70,14 @@ func (o *MultiplyOperation) GetSymbol() string {
 type DivideOperation struct{}
 
 func (o *DivideOperation) Calculate(a, b float64) float64 {
+	log.Printf("执行除法运算: %f / %f", a, b)
 	if b == 0 {
-		// 避免除以零错误，返回特殊值
+		log.Printf("警告: 除数为零")
 		return float64(0)
 	}
-	return a / b
+	result := a / b
+	log.Printf("除法运算结果: %f", result)
+	return result
 }
 
 func (o *DivideOperation) GetName() string {
