@@ -1,4 +1,4 @@
-package models
+package model
 
 import (
 	"time"
@@ -6,6 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Session 会话模型
 type Session struct {
 	gorm.Model
 	UserID    uint      `gorm:"not null" json:"user_id"`
@@ -13,7 +14,7 @@ type Session struct {
 	ExpiresAt time.Time `gorm:"not null" json:"expires_at"`
 }
 
-// TableName overrides the table name used by Session
+// TableName 指定表名
 func (Session) TableName() string {
 	return "sessions"
 }
