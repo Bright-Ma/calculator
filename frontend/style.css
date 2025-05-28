@@ -1,0 +1,247 @@
+/* 基础和 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    width: 90%;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-radius: 3px;
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    margin-top: 30px;
+}
+
+.container:hover {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.hidden {
+    display: none;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+#difficulty {
+    padding: 10px 15px;
+    font-size: 1em;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+#difficulty:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#generate {
+    background: linear-gradient(to right, #3498db, #9b59b6);
+}
+
+#submit {
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+}
+
+#generate:hover {
+    background: linear-gradient(to right, #2980b9, #8e44ad);
+}
+
+#submit:hover {
+    background: linear-gradient(to right, #27ae60, #219653);
+}
+
+#question {
+    font-size: 1.8em;
+    margin: 25px 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 5px solid #3498db;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+#answer {
+    padding: 12px;
+    font-size: 1.2em;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 200px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+#answer:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#result.correct {
+    color: #27ae60;
+    background-color: rgba(46, 204, 113, 0.1);
+}
+
+#result.incorrect {
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* 难度标签样式 */
+.difficulty-label {
+    font-size: 0.8em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.difficulty-label[data-difficulty="1"] {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.difficulty-label[data-difficulty="2"] {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.difficulty-label[data-difficulty="3"] {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* 其他样式 */
+#question {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+#answer {
+    padding: 8px;
+    font-size: 1.2em;
+    width: 100px;
+}
+
+button {
+    padding: 12px 24px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 8px;
+    font-weight: 500;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+.difficulty-btn {
+    min-width: 100px;
+}
+
+.difficulty-btn.easy {
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+}
+
+.difficulty-btn.medium {
+    background: linear-gradient(to right, #f39c12, #e67e22);
+}
+
+.difficulty-btn.hard {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    min-height: 24px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
