@@ -41,6 +41,7 @@ func SetupRouter() *gin.Engine {
 		{
 			drill.GET("/question", handlers.GetQuestion)
 			drill.POST("/answer", handlers.SubmitAnswer)
+			drill.GET("/rankings", handlers.GetHotRanking)
 		}
 
 		// 历史记录相关路由

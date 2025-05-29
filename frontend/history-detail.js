@@ -190,6 +190,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('logout-btn').addEventListener('click', () => {
         localStorage.removeItem('token');
         localStorage.removeItem('username');
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     });
 }); 

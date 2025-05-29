@@ -9,6 +9,34 @@
     <script src="auth.js" defer></script>
 </head>
 <body>
+    <!-- 热度排行榜模态框 -->
+    <div id="hot-rank-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>热度排行榜</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="rank-tabs">
+                    <button class="tab-btn active" data-type="hourly">小时榜</button>
+                    <button class="tab-btn" data-type="daily">日榜</button>
+                </div>
+                <table class="rank-table">
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>用户</th>
+                            <th>热度值</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingTableBody">
+                        <!-- 排行榜数据将通过 JavaScript 动态填充 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div id="auth-container">
             <div id="login-form" class="auth-form">
@@ -59,6 +87,7 @@
                 <h1>口算练习</h1>
                 <div class="user-info">
                     <span id="username-display"></span>
+                    <button id="hot-rank-btn">热度排行榜</button>
                     <button id="history-btn" onclick="window.location.href='history.html'">查看历史</button>
                     <button id="logout-btn">退出登录</button>
                 </div>

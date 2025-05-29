@@ -33,8 +33,72 @@ document.addEventListener('DOMContentLoaded', () => {
     const correctAnswersElement = document.getElementById('correct-answers');
     const accuracyElement = document.getElementById('accuracy');
 
+    // 热度排行榜相关元素
+    const hotRankBtn = document.getElementById('hot-rank-btn');
+    const hotRankModal = document.getElementById('hot-rank-modal');
+    const closeBtn = document.querySelector('.close-btn');
+    const rankTabs = document.querySelectorAll('.tab-btn');
+    const rankListBody = document.getElementById('rank-list-body');
+
     let currentQuestion = null;
     let currentUser = null;
+
+    // 热度排行榜相关函数
+    let currentRankType = 'hourly'; // 默认显示小时榜
+
+    function showHotRankModal() {
+        hotRankModal.style.display = 'block';
+        loadRankingData(currentRankType);
+    }
+
+    function closeHotRankModal() {
+        hotRankModal.style.display = 'none';
+    }
+
+    function switchTab(type) {
+        currentRankType = type;
+        // 更新按钮状态
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        // 加载对应类型的排行榜数据
+        loadRankingData(type);
+    }
+
+    async function loadRankingData(type) {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                throw new Error('请先登录');
+            }
+
+            const data = await apiRequest(`/api/drill/rankings?type=${type}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            // 清空现有数据
+            const tbody = document.getElementById('rankingTableBody');
+            tbody.innerHTML = '';
+
+            // 添加新数据
+            data.rankings.forEach(rank => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${rank.rank}</td>
+                    <td>${rank.username}</td>
+                    <td style="text-align: center;">${rank.hot_score.toFixed(1)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        } catch (error) {
+            console.error('获取排行榜失败:', error);
+            alert(error.message || '获取排行榜失败，请重试');
+        }
+    }
 
     // 表单切换
     showRegister.addEventListener('click', (e) => {
@@ -353,4 +417,29 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('username');
         currentUser = null;
     }
+
+    // 显示热度排行榜
+    hotRankBtn.addEventListener('click', showHotRankModal);
+
+    // 关闭热度排行榜
+    closeBtn.addEventListener('click', closeHotRankModal);
+
+    // 点击模态框外部关闭
+    window.addEventListener('click', (e) => {
+        if (e.target === hotRankModal) {
+            closeHotRankModal();
+        }
+    });
+
+    // 切换排行榜标签
+    rankTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // 移除所有标签的active类
+            rankTabs.forEach(t => t.classList.remove('active'));
+            // 添加当前标签的active类
+            tab.classList.add('active');
+            // 加载对应类型的排行榜
+            loadRankingData(tab.dataset.type);
+        });
+    });
 });
