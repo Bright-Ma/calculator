@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详细记录 - 口算练习</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>详细答题记录</h1>
+            <div class="user-info">
+                <span id="username-display"></span>
+                <button id="logout-btn">退出登录</button>
+            </div>
+        </div>
+
+        <!-- 筛选器 -->
+        <div class="history-filters">
+            <select id="difficulty-filter">
+                <option value="">所有难度</option>
+                <option value="easy">简单</option>
+                <option value="medium">中等</option>
+                <option value="hard">困难</option>
+            </select>
+            <select id="result-filter">
+                <option value="">所有结果</option>
+                <option value="correct">正确</option>
+                <option value="incorrect">错误</option>
+            </select>
+            <input type="date" id="date-filter" placeholder="选择日期">
+            <button id="apply-filters" class="btn btn-primary">应用筛选</button>
+            <button id="reset-filters" class="btn btn-secondary">重置</button>
+        </div>
+
+        <!-- 历史记录列表 -->
+        <div id="history-list" class="history-list">
+            <!-- 历史记录将通过 JavaScript 动态添加 -->
+        </div>
+
+        <!-- 分页控件 -->
+        <div class="pagination">
+            <button id="prev-page" class="btn btn-secondary" disabled>上一页</button>
+            <span id="page-info">第 1 页，共 1 页</span>
+            <button id="next-page" class="btn btn-secondary" disabled>下一页</button>
+        </div>
+
+        <!-- 返回按钮 -->
+        <div class="navigation">
+            <button onclick="window.location.href='history.html'" class="btn btn-secondary">返回概览</button>
+        </div>
+    </div>
+
+    <script src="history-detail.js"></script>
+</body>
+</html> 

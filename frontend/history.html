@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习历史 - 口算练习</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>学习历史</h1>
+            <div class="user-info">
+                <span id="username-display"></span>
+                <button id="logout-btn">退出登录</button>
+            </div>
+        </div>
+
+        <!-- 贡献日历视图 -->
+        <div class="contribution-calendar">
+            <div class="calendar-header">
+                <h2>学习记录</h2>
+                <div class="calendar-legend">
+                    <span>较少</span>
+                    <div class="legend-colors">
+                        <div class="color-box" style="background-color: #ebedf0"></div>
+                        <div class="color-box" style="background-color: #9be9a8"></div>
+                        <div class="color-box" style="background-color: #40c463"></div>
+                        <div class="color-box" style="background-color: #30a14e"></div>
+                        <div class="color-box" style="background-color: #216e39"></div>
+                    </div>
+                    <span>较多</span>
+                </div>
+            </div>
+            <div class="calendar-graph">
+                <div class="calendar-days">
+                    <!-- 星期标签将通过 JavaScript 动态添加 -->
+                </div>
+                <div class="calendar-content">
+                    <div class="calendar-grid">
+                        <!-- 贡献格子将通过 JavaScript 动态添加 -->
+                    </div>
+                    <div class="calendar-months">
+                        <!-- 月份标签将通过 JavaScript 动态添加 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-stats">
+            <div class="difficulty-stats">
+                <div class="difficulty-circle easy">
+                    <div class="number" id="easy-questions">0</div>
+                    <div class="label">简单题数</div>
+                </div>
+                <div class="difficulty-circle medium">
+                    <div class="number" id="medium-questions">0</div>
+                    <div class="label">中等题数</div>
+                </div>
+                <div class="difficulty-circle hard">
+                    <div class="number" id="hard-questions">0</div>
+                    <div class="label">困难题数</div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>总题数</h3>
+                    <p id="total-questions">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>总提交次数</h3>
+                    <p id="total-attempts">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>正确答题次数</h3>
+                    <p id="correct-answers">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>正确率</h3>
+                    <p id="correct-rate">0%</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button onclick="window.location.href='index.html'" class="btn btn-secondary">返回练习</button>
+            <button onclick="window.location.href='history-detail.html'" class="btn btn-primary">查看详细记录</button>
+        </div>
+    </div>
+
+    <script src="history.js"></script>
+</body>
+</html> 

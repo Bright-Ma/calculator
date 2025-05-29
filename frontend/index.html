@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小学生口算题系统</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <script src="auth.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div id="auth-container">
+            <div id="login-form" class="auth-form">
+                <h2>登录</h2>
+                <form id="login">
+                    <div class="form-group">
+                        <input type="text" id="login-username" placeholder="用户名" required>
+                        <div class="error-message" id="login-username-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="login-password" placeholder="密码" required>
+                        <div class="error-message" id="login-password-error"></div>
+                    </div>
+                    <div class="error-message" id="login-error"></div>
+                    <button type="submit" class="btn">登录</button>
+                </form>
+                <p>还没有账号？<a href="#" id="show-register">注册</a></p>
+            </div>
+            <div id="register-form" class="auth-form" style="display: none;">
+                <h2>注册</h2>
+                <form id="register">
+                    <div class="form-group">
+                        <input type="text" id="register-username" placeholder="用户名" required>
+                        <div class="error-message" id="register-username-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="register-password" placeholder="密码" required>
+                        <div class="error-message" id="register-password-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="register-confirm-password" placeholder="确认密码" required>
+                        <div class="error-message" id="register-confirm-password-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <select id="register-role" required>
+                            <option value="student">学生</option>
+                            <option value="teacher">老师</option>
+                        </select>
+                    </div>
+                    <div class="error-message" id="register-error"></div>
+                    <button type="submit" class="btn">注册</button>
+                </form>
+                <p>已有账号？<a href="#" id="show-login">登录</a></p>
+            </div>
+        </div>
+        <div id="app" style="display: none;">
+            <div class="header">
+                <h1>口算练习</h1>
+                <div class="user-info">
+                    <span id="username-display"></span>
+                    <button id="history-btn" onclick="window.location.href='history.html'">查看历史</button>
+                    <button id="logout-btn">退出登录</button>
+                </div>
+            </div>
+            <div class="controls">
+                <select id="difficulty">
+                    <option value="easy">简单</option>
+                    <option value="medium">中等</option>
+                    <option value="hard">困难</option>
+                </select>
+                <button id="generate">生成题目</button>
+            </div>
+            <div id="question-container" class="hidden">
+                <div id="question"></div>
+                <input type="number" id="answer" placeholder="请输入答案">
+                <button id="submit">提交答案</button>
+            </div>
+            <div id="result"></div>
+        </div>
+    </div>
+</body>
+</html>
