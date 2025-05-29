@@ -23,6 +23,8 @@ func SetupRouter() *gin.Engine {
 	r.StaticFile("/auth.js", "./frontend/auth.js")
 	r.StaticFile("/history.html", "./frontend/history.html")
 	r.StaticFile("/history.js", "./frontend/history.js")
+	r.StaticFile("/history-detail.html", "./frontend/history-detail.html")
+	r.StaticFile("/history-detail.js", "./frontend/history-detail.js")
 
 	// API 路由组
 	api := r.Group("/api")

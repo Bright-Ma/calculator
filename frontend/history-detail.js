@@ -75,7 +75,7 @@ function displayHistory(filteredHistory) {
         
         historyItem.innerHTML = `
             <div class="question">
-                <div class="question-content">${record.question}</div>
+                <div class="question-content">${record.question_content}</div>
                 <div class="question-meta">
                     <span class="difficulty ${difficultyClass}">${record.difficulty}</span>
                     <span class="time-spent">用时: ${record.time_spent}秒</span>
