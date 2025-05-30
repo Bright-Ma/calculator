@@ -32,6 +32,10 @@ func NewRedis() *Redis {
 			Addr:     "localhost:6379",
 			Password: "", // 如果有密码，在这里设置
 			DB:       0,  // 使用默认DB
+			// 添加持久化配置
+			MaxRetries:      3,                      // 最大重试次数
+			MinRetryBackoff: 8 * time.Millisecond,   // 最小重试间隔
+			MaxRetryBackoff: 512 * time.Millisecond, // 最大重试间隔
 		}),
 	}
 

@@ -64,8 +64,7 @@ go test -v ./internal/drill/...
 - 可按日期、难度筛选查看历史记录
 
 ### 3. 成绩统计分析
-- 正确率统计（按天/周/月）
-- 答题速度趋势分析
+- 正确率统计
 - 各难度题目掌握程度
 - 生成可视化学习报告
 
@@ -78,7 +77,7 @@ go test -v ./internal/drill/...
 ### 5. 热度排行榜
 - 基于时间戳和做题数量计算热度值
 - 使用Redis存储和实时更新排行榜
-- 每日/每周热度榜单
+- 每日/每时热度榜单
 - 热度算法：`热度 = 做题数量 * 时间衰减因子`
 
 ## 技术架构
@@ -117,27 +116,13 @@ cd calculator
 go mod download
 ```
 
-3. 配置数据库
-```bash
-# 创建数据库
-mysql -u root -p -e "CREATE DATABASE math_drill CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-# 配置数据库连接
-# 编辑 config/database.yaml 文件
+4. 运行应用
+```bash
+go run .
 ```
 
-4. 配置Redis
-```bash
-# 确保Redis服务已启动
-redis-server &
-```
-
-5. 运行应用
-```bash
-go run cmd/server/main.go
-```
-
-6. 访问应用
+5. 访问应用
 ```
 http://localhost:8080
 ```
@@ -148,22 +133,24 @@ http://localhost:8080
 1. 注册/登录账号
 2. 选择难度级别开始练习
 3. 完成练习后查看成绩和错题
-4. 查看个人学习历史和进步曲线
+4. 查看个人学习历史和准确率
 5. 查看热度排行榜
 
 
 ## 项目结构
 ```
-math-drill/
-├── cmd/                    # 应用入口
-│   └── server/             # 服务器入口
-├── internal/               # 核心逻辑
-│   ├── auth/               # 认证模块
-│   ├── drill/              # 口算题生成逻辑
-│   ├── ranking/            # 排行榜逻辑
-│   └── stats/              # 统计模块
-├── migrations/             # 数据库迁移文件
-├── pkg/                    # 可复用包
-├── web/                    # 前端资源
-└── config/                 # 配置文件
+calculator/
+├── internal/             # 后端代码
+│   ├── handlers/         # HTTP请求处理器
+│   ├── redis/            # Redis缓存
+│   ├── model/            # 数据模型
+│   ├── router/           # 路由配置
+│   ├── middleware/       # 中间件
+│   ├── drill/            # 口算题生成
+│   └── database/         # 数据库操作
+├── main.go               # 程序入口
+├── go.mod                # Go模块文件
+├── go.sum                # Go依赖版本锁定
+├── redis.conf            # Redis配置文件
+├── frontend/             # 前端资源
 ```
